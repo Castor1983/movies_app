@@ -57,7 +57,6 @@ const getAll = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const movies = await requestServices.moviesService.getAll();
-            console.log(movies)
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             const error = e as AxiosError;
@@ -74,6 +73,11 @@ const getAll = createAsyncThunk(
             state.movies = action.payload;
 
         })
+     .addCase(getAll.rejected, (state, action) => {
+         console.log( action.payload);
+
+     })
+
 })
 
 export const movieActions = {

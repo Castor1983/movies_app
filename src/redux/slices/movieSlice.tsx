@@ -64,6 +64,18 @@ const getAll = createAsyncThunk(
         }
     }
 )
+const getById = createAsyncThunk(
+    'movieSlice/getById',
+    async (id: string, thunkAPI) => {
+        try {
+            const movie = await requestServices.moviesService.getById(id);
+            return thunkAPI.fulfillWithValue(movie);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error.response?.data)
+        }
+    }
+)
  export const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: movieInitialState,
@@ -73,14 +85,16 @@ const getAll = createAsyncThunk(
             state.movies = action.payload;
 
         })
-     .addCase(getAll.rejected, (state, action) => {
-         console.log( action.payload);
+        .addCase(getById.fulfilled, (state, action) => {
+            state.movie = action.payload;
 
-     })
+        })
+
 
 })
 
 export const movieActions = {
     ...movieSlice.actions,
-   getAll
+   getAll,
+    getById
 }

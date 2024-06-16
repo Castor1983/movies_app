@@ -5,7 +5,7 @@ import MovieCardComponent from '../movieCardComponent/MovieCardComponent';
 
 const MoviesListComponent = () => {
     const {movies} =useAppSelector(state => state.moviesListSlice)
-    console.log(movies)
+
     return (
         <div>
             {

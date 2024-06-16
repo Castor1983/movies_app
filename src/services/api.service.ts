@@ -1,17 +1,25 @@
 import axios from "axios";
-import { baseUrl } from "../constants/urls";
+import { baseUrl, urls } from "../constants/urls";
+import { IResponseMoviesListModel } from "../models/IResponseMoviesListModel";
 
+const token = process.env.REACT_APP_API_TOKEN;
 const axiosInstance = axios.create({
     baseURL: baseUrl,
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWNjYjQyNTZhNDdkYmQ4NjM2Y2FiNTkwNzZlYjljYSIsInN1YiI6IjY0YmVhZWQ3ZTlkYTY5MDBlY2ViMWQwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eUovTjLiNTyX_Na-LMqLl0gWsksfTARfi5Dzb7LFaLM'
+        Authorization: `Bearer ${token}`
+    },
+    params: {
+        page: '1'
     }
 })
 
 export const requestServices = {
     moviesService:{
-
+        getAll: async ():Promise<IResponseMoviesListModel>=> {
+            const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.byPageNumber)
+            return response.data
+        }
     },
     genresService:{
 

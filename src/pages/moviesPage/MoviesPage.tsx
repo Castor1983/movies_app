@@ -1,10 +1,10 @@
 import React from 'react';
-import MainLayout from "../../layout/MainLayout";
+import MoviesListComponent from '../../components/moviesListComponent/MoviesListComponent';
 
 const MoviesPage = () => {
     return (
         <div>
-            <MainLayout/>
+            <MoviesListComponent/>
         </div>
     );
 };

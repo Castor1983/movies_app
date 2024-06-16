@@ -1,9 +1,10 @@
 
-const baseUrl = 'https://api.themoviedb.org/3'
+const baseUrl =  process.env.REACT_APP_API
+const movies = '/discover/movie';
 
 const urls = {
     movies:{
-
+        byPageNumber: movies,
     },
     genres: {
 

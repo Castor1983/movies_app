@@ -1,9 +1,17 @@
-import {createBrowserRouter, RouteObject} from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
+import {createBrowserRouter, Navigate, RouteObject} from "react-router-dom";
+import MainLayout from "../layouts/MainLayout";
+import { appRoutes } from "./appRoutes";
+import MoviesPage from "../pages/moviesPage/MoviesPage";
 
 
 const routes: RouteObject[] = [{
-    path: '', element: <MainLayout/>
+    path: appRoutes.MAIN, element: <MainLayout/>, children: [
+
+        {
+            path: appRoutes.MOVIESLIST,
+            element: <MoviesPage/>
+        },
+    ]
 
 }]
 

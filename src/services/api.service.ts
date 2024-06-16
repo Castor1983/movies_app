@@ -2,6 +2,7 @@ import axios from "axios";
 import { baseUrl, token, urls } from "../constants/urls";
 import { IResponseMoviesListModel } from "../models/IResponseMoviesListModel";
 import { IMovieCardModel } from "../models/IMovieCardModel";
+import { useParams } from "react-router-dom";
 
 
 const axiosInstance = axios.create({
@@ -11,7 +12,7 @@ const axiosInstance = axios.create({
         Authorization: `Bearer ${token}`
     },
     params: {
-        page: '3'
+        page: '1'
     }
 })
 

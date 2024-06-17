@@ -2,6 +2,7 @@ import axios from "axios";
 import { baseUrl, token, urls } from "../constants/urls";
 import { IResponseMoviesListModel } from "../models/IResponseMoviesListModel";
 import { IMovieCardModel } from "../models/IMovieCardModel";
+import { IResponseGenresListModel } from "../models/IResponseGenreListModel";
 
 
 
@@ -27,6 +28,9 @@ export const requestServices = {
         }
     },
     genresService:{
-
+        getAll: async ():Promise<IResponseGenresListModel>=> {
+            const response = await axiosInstance.get<IResponseGenresListModel>(urls.genres.getAll, {params: {language: 'en'}})
+            return response.data
+}
     }
 }

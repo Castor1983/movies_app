@@ -18,7 +18,7 @@ const routes: RouteObject[] = [{
             element: <MovieInfoPage/>
         },
         {
-            path: appRoutes.MOVIEINFO,
+            path: appRoutes.GENRELIST,
             element: <GenresPage/>
         },
     ]

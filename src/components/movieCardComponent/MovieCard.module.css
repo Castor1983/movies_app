@@ -1,17 +1,15 @@
 .MovieCard {
-    padding: 15px;
     height: 350px;
-    width: 150px;
+    width: 180px;
     text-align: center;
     border-radius: 10px;
-    margin: 15px;
     display: grid;
-    background: rgba(0, 0, 1, 0.4);
+
 
 
 }
 
-h2 {
+h3 {
     text-align: center;
     color: blue;
 }

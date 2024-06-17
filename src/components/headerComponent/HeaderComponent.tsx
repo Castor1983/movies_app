@@ -13,7 +13,7 @@ const HeaderComponent = () => {
                 <h3>The MovieDB</h3>
                 <NavLink to={appRoutes.MOVIESLIST} style={{textDecoration: 'none', color: 'yellow'}}>Movies</NavLink>
                 <NavLink to={appRoutes.GENRELIST} style={{textDecoration: 'none', color: 'yellow'}}>Genres</NavLink>
-                {/*<NavLink to={appRoutes.SEARCH} style={{textDecoration: 'none', color: 'yellow'}}>Search</NavLink>*/}
+                <NavLink to={appRoutes.SEARCH} style={{textDecoration: 'none', color: 'yellow'}}>Search</NavLink>
                 <ThemeComponent/>
                 <UserInfoComponent/>
             </div>

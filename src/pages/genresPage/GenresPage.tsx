@@ -6,7 +6,7 @@ import { genreActions } from '../../redux/slices/genreSlice';
 const GenresPage = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(genreActions.getAll)
+        dispatch(genreActions.getAll())
     }, []);
     return (
         <div>

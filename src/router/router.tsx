@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import { appRoutes } from "./appRoutes";
 import MoviesPage from "../pages/moviesPage/MoviesPage";
 import MovieInfoPage from "../pages/movieInfoPage/MovieInfoPage";
+import GenresPage from "../pages/genresPage/GenresPage";
 
 
 const routes: RouteObject[] = [{
@@ -15,6 +16,10 @@ const routes: RouteObject[] = [{
         {
             path: appRoutes.MOVIEINFO,
             element: <MovieInfoPage/>
+        },
+        {
+            path: appRoutes.MOVIEINFO,
+            element: <GenresPage/>
         },
     ]
 

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { posterURL } from '../../constants/urls';
+import css from './PosterPreview.module.css'
 type IProps ={
     posterPath: string
 }
@@ -7,8 +8,8 @@ type IProps ={
 const PosterPreviewComponent: FC <IProps>= ({posterPath}) => {
 
     return (
-        <div>
-            <img src={`${posterURL}${posterPath}`}/>
+        <div className={css.PosterPreview}>
+            <img src={`${posterURL}${posterPath}`} className={css.Poster}/>
         </div>
     );
 };

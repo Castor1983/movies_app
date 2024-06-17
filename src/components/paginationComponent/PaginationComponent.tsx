@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import css from './Pagination.module.css'
 
 
 type IProps ={
@@ -25,18 +26,18 @@ const PaginationComponent: FC <IProps> = ({page, totalPages}) => {
 
     return (
         <div>
-           <button
+           <button className={css.button}
                 disabled={page === 1}
                 onClick={() => {
                     changePage('prev');
-                }}>prev
+                }}>Previous
             </button>
-            <button
+            <button className={css.button}
                 disabled={page === totalPages}
                 onClick={() => {
                     changePage('next');
 
-                }}>next
+                }}>Next
             </button>
         </div>
     );

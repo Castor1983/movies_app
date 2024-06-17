@@ -8,7 +8,8 @@ const MoviesPage = () => {
     const{page} = useParams()
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(movieActions.getAll())
+        if (page)
+        dispatch(movieActions.getAll(page))
     }, [page]);
 
     return (

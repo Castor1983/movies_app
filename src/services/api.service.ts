@@ -2,24 +2,22 @@ import axios from "axios";
 import { baseUrl, token, urls } from "../constants/urls";
 import { IResponseMoviesListModel } from "../models/IResponseMoviesListModel";
 import { IMovieCardModel } from "../models/IMovieCardModel";
-import { useParams } from "react-router-dom";
 
 
-const axiosInstance = axios.create({
+
+ export const axiosInstance = axios.create({
     baseURL: baseUrl,
     headers: {
         accept: 'application/json',
         Authorization: `Bearer ${token}`
     },
-    params: {
-        page: '1'
-    }
+
 })
 
 export const requestServices = {
     moviesService:{
-        getAll: async ():Promise<IResponseMoviesListModel>=> {
-            const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.byPageNumber)
+        getAll: async (page: string):Promise<IResponseMoviesListModel>=> {
+            const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.byPageNumber, {params: {page: `${page}`}})
             return response.data
         },
         getById: async (id: string):Promise<IMovieCardModel>=> {

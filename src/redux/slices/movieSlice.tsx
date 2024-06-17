@@ -54,9 +54,9 @@ const movieInitialState: movieSliceType = {
 
 const getAll = createAsyncThunk(
     'movieSlice/getAll',
-    async (_, thunkAPI) => {
+    async (page: string, thunkAPI) => {
         try {
-            const movies = await requestServices.moviesService.getAll();
+            const movies = await requestServices.moviesService.getAll(page);
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             const error = e as AxiosError;

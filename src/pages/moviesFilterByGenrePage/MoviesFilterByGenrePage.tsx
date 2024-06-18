@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import MoviesFilterByGenreComponent from '../../components/moviesFilterByGenreComponent/MoviesFilterByGenreComponent';
 import { useAppDispatch } from '../../redux/store/store';
 import { movieActions } from '../../redux/slices/movieSlice';
 import { useParams } from 'react-router-dom';
+import MoviesListComponent from '../../components/moviesListComponent/MoviesListComponent';
 
 const MoviesFilterByGenrePage = () => {
     const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ const MoviesFilterByGenrePage = () => {
 
     return (
         <div>
-            <MoviesFilterByGenreComponent/>
+            <MoviesListComponent/>
         </div>
     );
 };

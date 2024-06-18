@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate, useSearchParams} from 'react-router-dom';
 import css from './Pagination.module.css'
 
 
@@ -9,15 +9,17 @@ type IProps ={
 }
 const PaginationComponent: FC <IProps> = ({page, totalPages}) => {
     const navigate = useNavigate()
+    const {pathname} =useLocation()
+
     const changePage = (nextOrPrev: string) => {
         switch (nextOrPrev) {
             case 'next':
                 page +=1;
-                navigate(`/movies/${page}`);
+                navigate(`${pathname}/${page}`);
                 break;
             case 'prev':
                 page -=1;
-                navigate(`/movies/${page}`);
+                navigate(`${pathname}/${page}`);
                 break;
 
         }

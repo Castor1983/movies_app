@@ -8,7 +8,6 @@ const MovieInfoComponent = () => {
     const navigate = useNavigate()
     const{movie, movies} = useAppSelector(state => state.moviesListSlice)
     const {backdrop_path, title, overview, genres, vote_average, release_date, runtime, budget,} = movie;
-    const {page} = movies
     return (
         <div className={css.MovieDetails}>
             <div className={css.title}>
@@ -17,15 +16,15 @@ const MovieInfoComponent = () => {
             </div>
             <div className={css.textInfo}>
                 <div>{overview}</div>
-                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genres/${genre.id}`} key={genre.id}
-                                                                   style={{textDecoration: 'none', color: 'yellow',}}>
+                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genres/${genre.id}/1`} key={genre.id}
+                                                                   style={{textDecoration: 'none', color: 'rgba(0,0,255,0.6)',}}>
                     {genre.name}
                 </NavLink></div>))}</div>
                 <div>Relise date: {release_date}</div>
                 <div>Runtime:{runtime} min.</div>
                 <div>Budget: {budget}$</div>
                 <button onClick={()=>{
-                    navigate(`/movies/${page}`)
+                    navigate(-1)
                 }} className={css.button} > Back</button>
             </div>
         </div>

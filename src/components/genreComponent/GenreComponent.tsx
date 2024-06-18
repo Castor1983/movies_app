@@ -10,7 +10,7 @@ const GenreComponent : FC <IProps>= ({genre}) => {
     return (
         <div>
             <button className={css.button} onClick={()=> {
-                navigate(`${genre.id}`)
+                navigate(`${genre.id}/1`)
             }}>{genre.name}</button>
         </div>
     );

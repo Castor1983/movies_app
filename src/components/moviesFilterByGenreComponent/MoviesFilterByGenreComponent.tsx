@@ -1,6 +1,7 @@
 import React from 'react';
 
-const GenreSearchByIdComponent = () => {
+const MoviesFilterByGenreComponent = () => {
+
     return (
         <div>
             
@@ -8,4 +9,4 @@ const GenreSearchByIdComponent = () => {
     );
 };
 
-export default GenreSearchByIdComponent;
+export default MoviesFilterByGenreComponent;

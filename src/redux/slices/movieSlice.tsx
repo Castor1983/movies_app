@@ -78,12 +78,13 @@ const getById = createAsyncThunk(
 )
 const getFilterByGenre = createAsyncThunk(
     'movieSlice/getFilterByGenre',
-    async ({id, page}, thunkAPI):Promise<IResponseMoviesListModel> => {
+    async ({id, page}:{id:number,page:number}, thunkAPI):Promise<IResponseMoviesListModel> => {
         try {
             const movies = await requestServices.moviesService.getFilterByGenre({id, page});
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             const error = e as AxiosError;
+            // @ts-ignore
             return thunkAPI.rejectWithValue(error.response?.data)
         }
     }

@@ -26,7 +26,7 @@ export const requestServices = {
             return response.data
 
         },
-        getFilterByGenre: async ({id:number, page:number}):Promise<IResponseMoviesListModel>=> {
+        getFilterByGenre: async ({id, page}:{id: number, page: number}):Promise<IResponseMoviesListModel>=> {
             const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.getByGenre, {params: {with_genres: `${id}`, page: `${page}`}})
             return response.data
         }

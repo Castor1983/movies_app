@@ -8,8 +8,9 @@ const posterURL = 'https://image.tmdb.org/t/p/w500/';
 
 const urls = {
     movies:{
-        byPageNumber: movies,
-        byId: (id: string) => `${movie}/${id}`
+        getAll: movies,
+        getById: (id: string) => `${movie}/${id}`,
+        getByGenre: movies
     },
     genres: {
         getAll: genres

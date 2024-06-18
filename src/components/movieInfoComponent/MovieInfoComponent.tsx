@@ -17,7 +17,7 @@ const MovieInfoComponent = () => {
             </div>
             <div className={css.textInfo}>
                 <div>{overview}</div>
-                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genre/${genre.id}`} key={genre.id}
+                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genres/${genre.id}`} key={genre.id}
                                                                    style={{textDecoration: 'none', color: 'yellow',}}>
                     {genre.name}
                 </NavLink></div>))}</div>

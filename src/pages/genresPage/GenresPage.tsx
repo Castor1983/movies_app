@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import GenresComponent from '../../components/genresComponent/GenresComponent';
 import { useAppDispatch } from '../../redux/store/store';
 import { genreActions } from '../../redux/slices/genreSlice';
+import { Outlet } from 'react-router-dom';
 
 const GenresPage = () => {
     const dispatch = useAppDispatch()
@@ -11,6 +12,7 @@ const GenresPage = () => {
     return (
         <div>
             <GenresComponent/>
+            <Outlet/>
         </div>
     );
 };

@@ -76,6 +76,18 @@ const getById = createAsyncThunk(
         }
     }
 )
+const getFilterByGenre = createAsyncThunk(
+    'movieSlice/getFilterByGenre',
+    async ({id, page}, thunkAPI):Promise<IResponseMoviesListModel> => {
+        try {
+            const movies = await requestServices.moviesService.getFilterByGenre({id, page});
+            return thunkAPI.fulfillWithValue(movies);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error.response?.data)
+        }
+    }
+)
  export const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: movieInitialState,
@@ -89,12 +101,15 @@ const getById = createAsyncThunk(
             state.movie = action.payload;
 
         })
-
-
+        .addCase(getFilterByGenre.fulfilled, (state, action) => {
+            state.movies = action.payload;
+        })
 })
 
 export const movieActions = {
     ...movieSlice.actions,
-   getAll,
-    getById
+         getAll,
+         getById,
+         getFilterByGenre
+
 }

@@ -4,6 +4,7 @@ import { appRoutes } from "./appRoutes";
 import MoviesPage from "../pages/moviesPage/MoviesPage";
 import MovieInfoPage from "../pages/movieInfoPage/MovieInfoPage";
 import GenresPage from "../pages/genresPage/GenresPage";
+import GenreSearchByIdComponent from "../components/genreSearchByIdComponent/GenreSearchByIdComponent";
 
 
 const routes: RouteObject[] = [{
@@ -19,7 +20,12 @@ const routes: RouteObject[] = [{
         },
         {
             path: appRoutes.GENRELIST,
-            element: <GenresPage/>
+            element: <GenresPage/>, children: [
+                {
+                    path: appRoutes.SEARCHBYGENRE,
+                    element: <GenreSearchByIdComponent/>
+                }
+            ]
         },
     ]
 

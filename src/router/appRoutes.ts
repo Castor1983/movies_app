@@ -4,4 +4,5 @@ export const appRoutes = {
     MOVIEINFO: '/movieinfo/:id',
     SEARCH: '/search',
     GENRELIST: '/genres',
+    SEARCHBYGENRE: '/genres/:id'
 }

@@ -4,8 +4,6 @@ import { IResponseMoviesListModel } from "../models/IResponseMoviesListModel";
 import { IMovieCardModel } from "../models/IMovieCardModel";
 import { IResponseGenresListModel } from "../models/IResponseGenreListModel";
 
-
-
  export const axiosInstance = axios.create({
     baseURL: baseUrl,
     headers: {
@@ -26,7 +24,7 @@ export const requestServices = {
             return response.data
 
         },
-        getFilterByGenre: async ({id, page}:{id: number, page: number}):Promise<IResponseMoviesListModel>=> {
+        getFilterByGenre: async ({id, page}:{id: string, page: string}):Promise<IResponseMoviesListModel>=> {
             const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.getByGenre, {params: {with_genres: `${id}`, page: `${page}`}})
             return response.data
         }

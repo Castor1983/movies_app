@@ -27,7 +27,12 @@ export const requestServices = {
         getFilterByGenre: async ({id, page}:{id: string, page: string}):Promise<IResponseMoviesListModel>=> {
             const response = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.getByGenre, {params: {with_genres: `${id}`, page: `${page}`}})
             return response.data
+        },
+        searchByKeyWords: async ({with_keywords, page}: {with_keywords: string, page: string } ): Promise<IResponseMoviesListModel>=> {
+            const response = await  axiosInstance.get<IResponseMoviesListModel>(urls.movies.searchByKeyWords, {params: {with_keywords: `${with_keywords}`, page: `${page}`}})
+            return response.data
         }
+
     },
     genresService:{
         getAll: async ():Promise<IResponseGenresListModel>=> {

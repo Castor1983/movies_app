@@ -3,12 +3,10 @@ import {useForm} from 'react-hook-form'
 import { IKeyWordsModel } from '../../models/IKeyWordsModel';
 import { useAppDispatch } from '../../redux/store/store';
 import { movieActions } from '../../redux/slices/movieSlice';
-import { useParams } from 'react-router-dom';
 
 const SearchByKeyWordsFormComponent = () => {
     const {register,handleSubmit, reset} = useForm<IKeyWordsModel>();
     const dispatch = useAppDispatch()
-    //const{page} =useParams()
 
     const search= (keywords: IKeyWordsModel) => {
         const{with_keywords} = keywords

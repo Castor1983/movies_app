@@ -29,7 +29,7 @@ export const requestServices = {
             return response.data
         },
         searchByKeyWords: async ({with_keywords, page}: {with_keywords: string, page: string } ): Promise<IResponseMoviesListModel>=> {
-            const response = await  axiosInstance.get<IResponseMoviesListModel>(urls.movies.searchByKeyWords, {params: {with_keywords: `${with_keywords}`, page: `${page}`}})
+            const response = await  axiosInstance.get<IResponseMoviesListModel>(urls.movies.searchByKeyWords, {params: {query: `${with_keywords}`, page: `${page}`}})
             return response.data
         }
 

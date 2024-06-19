@@ -15,11 +15,10 @@ const PaginationComponent: FC <IProps> = ({page, totalPages}) => {
         switch (nextOrPrev) {
             case 'next':
                 page +=1;
-                navigate(`/movies/${page}`);
+
                 break;
             case 'prev':
                 page -=1;
-                navigate(`/movies/${page}`);
                 break;
 
         }

@@ -91,9 +91,9 @@ const getFilterByGenre = createAsyncThunk(
 )
 const searchByKeyWords = createAsyncThunk(
     'movieSlice/searchByKeyWords',
-    async ({keywords, page}:{keywords:string,page:string}, thunkAPI):Promise<IResponseMoviesListModel> => {
+    async ({with_keywords, page}:{with_keywords:string,page:string}, thunkAPI):Promise<IResponseMoviesListModel> => {
         try {
-            const movies = await requestServices.moviesService.searchByKeyWords({keywords, page});
+            const movies = await requestServices.moviesService.searchByKeyWords({with_keywords, page});
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             const error = e as AxiosError;

@@ -15,7 +15,7 @@ const ThemeComponent = () => {
         } else {
             document.body.classList.remove('dark');
         }
-    });
+    }, [theme]);
     return (
         <div>
             <button onClick={handleclick} className={css.button}>{theme?'Light theme' : 'Dark theme'}</button>

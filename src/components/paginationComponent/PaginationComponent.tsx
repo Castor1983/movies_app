@@ -1,24 +1,25 @@
 import React, { FC } from 'react';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import css from './Pagination.module.css'
+import { useAppSelector } from '../../redux/store/store';
+import { SetURLSearchParams } from 'react-router-dom';
+
 
 
 type IProps ={
-    page: number,
-    totalPages: number
+    setQuery: SetURLSearchParams
 }
-const PaginationComponent: FC <IProps> = ({page, totalPages}) => {
-    const navigate = useNavigate()
-    const {pathname} =useLocation()
-    const params = useParams()
+const PaginationComponent: FC <IProps> = ({setQuery}) => {
+    const {movies:{total_pages, page}} = useAppSelector(state => state.moviesListSlice)
     const changePage = (nextOrPrev: string) => {
         switch (nextOrPrev) {
             case 'next':
-                page +=1;
-
+                setQuery({page: (page + 1).toString()
+        })
                 break;
+
             case 'prev':
-                page -=1;
+                setQuery({page: (page - 1).toString()
+        })
                 break;
 
         }
@@ -34,7 +35,7 @@ const PaginationComponent: FC <IProps> = ({page, totalPages}) => {
                 }}>Previous
             </button>
             <button className={css.button}
-                disabled={page === totalPages}
+                disabled={page === total_pages}
                 onClick={() => {
                     changePage('next');
 

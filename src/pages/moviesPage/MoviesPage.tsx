@@ -2,19 +2,22 @@ import React, { useEffect } from 'react';
 import MoviesListComponent from '../../components/moviesListComponent/MoviesListComponent';
 import { useAppDispatch } from '../../redux/store/store';
 import { movieActions } from '../../redux/slices/movieSlice';
-import { useParams } from 'react-router-dom';
+import {useSearchParams } from 'react-router-dom';
+import PaginationComponent from '../../components/paginationComponent/PaginationComponent';
 
 const MoviesPage = () => {
-    const{page} = useParams()
+    const [query, setQuery] = useSearchParams({page: '1'})
     const dispatch = useAppDispatch();
     useEffect(() => {
-        if (page)
+        const page = query.get('page')
+        if(page)
         dispatch(movieActions.getAll(page))
-    }, [page]);
+    }, [query]);
 
     return (
         <div>
             <MoviesListComponent/>
+            <PaginationComponent setQuery={setQuery} />
 
         </div>
     );

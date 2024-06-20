@@ -1,10 +1,13 @@
-import React, {useEffect, useState } from 'react';
+import React, {useEffect } from 'react';
 import css from '../paginationComponent/Pagination.module.css'
+import { useAppDispatch, useAppSelector } from '../../redux/store/store';
+import { movieActions } from '../../redux/slices/movieSlice';
 
 const ThemeComponent = () => {
-    const [theme, setTheme] = useState(false);
+    const dispatch =useAppDispatch()
+   const {theme} = useAppSelector(state => state.moviesListSlice)
     const handleclick = () => {
-        setTheme(!theme)
+        dispatch(movieActions.toggleValue())
     }
     useEffect(() => {
         if (theme == true){

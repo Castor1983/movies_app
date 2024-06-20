@@ -7,6 +7,7 @@ import { AxiosError } from "axios"
 type movieSliceType = {
     movies: IResponseMoviesListModel,
     movie: IMovieCardModel,
+    theme: boolean,
     error: ''
 }
 const movieInitialState: movieSliceType = {
@@ -49,6 +50,7 @@ const movieInitialState: movieSliceType = {
         vote_average: 0,
         vote_count: 0
     },
+    theme: false,
     error: ''
 }
 
@@ -105,7 +107,11 @@ const searchByKeyWords = createAsyncThunk(
  export const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: movieInitialState,
-    reducers: {},
+    reducers: {
+        toggleValue: (state) => {
+            state.theme = !state.theme
+        }
+    },
     extraReducers: builder => builder
         .addCase(getAll.fulfilled, (state, action) => {
             state.movies = action.payload;

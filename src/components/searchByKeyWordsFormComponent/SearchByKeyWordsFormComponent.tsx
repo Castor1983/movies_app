@@ -9,17 +9,16 @@ const SearchByKeyWordsFormComponent = () => {
     const {register,handleSubmit, reset} = useForm<IKeyWordsModel>();
     const dispatch = useAppDispatch()
 
-    const search= (keywords: IKeyWordsModel) => {
-        const{with_keywords} = keywords
-        const page = '1'
-        if (with_keywords && page)
-        dispatch(movieActions.searchByKeyWords({with_keywords, page}))
+    const search= (querykeywords: IKeyWordsModel) => {
+        const{keywords} = querykeywords
+        if (keywords)
+        dispatch(movieActions.keyWords(keywords))
         reset()
     }
     return (
         <div>
             <form onSubmit={handleSubmit(search)}>
-                <input  className={css.input} type='text' placeholder={'keyWords'} {...register('with_keywords')}/>
+                <input  className={css.input} type='text' placeholder={'keyWords'} {...register('keywords')}/>
                 <button className={css.button}>Search</button>
             </form>
 

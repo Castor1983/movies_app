@@ -8,7 +8,8 @@ type movieSliceType = {
     movies: IResponseMoviesListModel,
     movie: IMovieCardModel,
     theme: boolean,
-    error: ''
+    keywords: string
+    error: string
 }
 const movieInitialState: movieSliceType = {
     movies:{
@@ -51,6 +52,7 @@ const movieInitialState: movieSliceType = {
         vote_count: 0
     },
     theme: false,
+    keywords:'',
     error: ''
 }
 
@@ -93,9 +95,9 @@ const getFilterByGenre = createAsyncThunk(
 )
 const searchByKeyWords = createAsyncThunk(
     'movieSlice/searchByKeyWords',
-    async ({with_keywords, page}:{with_keywords:string,page:string}, thunkAPI):Promise<IResponseMoviesListModel> => {
+    async ({keywords, page}:{keywords:string,page:string}, thunkAPI):Promise<IResponseMoviesListModel> => {
         try {
-            const movies = await requestServices.moviesService.searchByKeyWords({with_keywords, page});
+            const movies = await requestServices.moviesService.searchByKeyWords({keywords, page});
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             const error = e as AxiosError;
@@ -110,6 +112,9 @@ const searchByKeyWords = createAsyncThunk(
     reducers: {
         toggleValue: (state) => {
             state.theme = !state.theme
+        },
+        keyWords: (state, action ) => {
+            state.keywords = action.payload
         }
     },
     extraReducers: builder => builder

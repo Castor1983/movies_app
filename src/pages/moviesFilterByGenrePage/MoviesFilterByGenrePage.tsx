@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store/store';
 import { movieActions } from '../../redux/slices/movieSlice';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import MoviesListComponent from '../../components/moviesListComponent/MoviesListComponent';
 import PaginationComponent from '../../components/paginationComponent/PaginationComponent';
 

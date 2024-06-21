@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import {PayloadAction, createAsyncThunk, createSlice, isFulfilled } from "@reduxjs/toolkit"
 import { IMovieCardModel } from "../../models/IMovieCardModel"
 import { IResponseMoviesListModel } from "../../models/IResponseMoviesListModel"
 import { requestServices } from "../../services/api.service"
@@ -8,7 +8,7 @@ type movieSliceType = {
     movies: IResponseMoviesListModel,
     movie: IMovieCardModel,
     theme: boolean,
-    keywords: string
+    keywords: string,
     error: string
 }
 const movieInitialState: movieSliceType = {
@@ -110,26 +110,26 @@ const searchByKeyWords = createAsyncThunk(
     name: 'movieSlice',
     initialState: movieInitialState,
     reducers: {
-        toggleValue: (state) => {
+        toggleValue: (state ) => {
             state.theme = !state.theme
         },
-        keyWords: (state, action ) => {
+        keyWords: (state, action: PayloadAction<string> ) => {
             state.keywords = action.payload
         }
     },
     extraReducers: builder => builder
-        .addCase(getAll.fulfilled, (state, action) => {
+        .addCase(getAll.fulfilled, (state, action: PayloadAction<IResponseMoviesListModel>) => {
             state.movies = action.payload;
 
         })
-        .addCase(getById.fulfilled, (state, action) => {
+        .addCase(getById.fulfilled, (state, action: PayloadAction<IMovieCardModel>) => {
             state.movie = action.payload;
 
         })
-        .addCase(getFilterByGenre.fulfilled, (state, action) => {
+        .addCase(getFilterByGenre.fulfilled, (state, action: PayloadAction<IResponseMoviesListModel>) => {
             state.movies = action.payload;
         })
-        .addCase(searchByKeyWords.fulfilled, (state, action) => {
+        .addCase(searchByKeyWords.fulfilled, (state, action: PayloadAction<IResponseMoviesListModel>) => {
             state.movies = action.payload;
         })
 })

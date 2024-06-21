@@ -23,8 +23,8 @@ export const requestServices = {
             return response.data
 
         },
-        getFilterByGenre: async ({id, page}:{id: string, page: string}):Promise<IResponseMoviesListModel>=> {
-            const response: AxiosResponse<IResponseMoviesListModel> = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.getByGenre, {params: {with_genres: `${id}`, page: `${page}`}})
+        getFilterByGenre: async ({genreId, page}:{genreId: number, page: string}):Promise<IResponseMoviesListModel>=> {
+            const response: AxiosResponse<IResponseMoviesListModel> = await axiosInstance.get<IResponseMoviesListModel>(urls.movies.getByGenre, {params: {with_genres: `${genreId}`, page: `${page}`}})
             return response.data
         },
         searchByKeyWords: async ({keywords, page}: {keywords: string, page: string } ): Promise<IResponseMoviesListModel>=> {

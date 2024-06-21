@@ -7,7 +7,7 @@ import css from './MovieInfo.module.css'
 const MovieInfoComponent = () => {
     const navigate = useNavigate()
     const{movie, movies} = useAppSelector(state => state.moviesListSlice)
-    const {backdrop_path, title, overview, genres, vote_average, release_date, runtime, budget,} = movie;
+    const {backdrop_path, title, overview, genres,  release_date, runtime, budget,} = movie;
     return (
         <div className={css.MovieDetails}>
             <div className={css.title}>
@@ -16,7 +16,7 @@ const MovieInfoComponent = () => {
             </div>
             <div className={css.textInfo}>
                 <div>{overview}</div>
-                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genres/${genre.id}/1`} key={genre.id}
+                <div> Genres: {genres?.map(genre => (<div><NavLink to={`/genres/${genre.name}`} key={genre.id}
                                                                    style={{textDecoration: 'none', color: 'rgba(0,0,255,0.6)',}}>
                     {genre.name}
                 </NavLink></div>))}</div>

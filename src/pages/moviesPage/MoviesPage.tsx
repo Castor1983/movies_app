@@ -5,7 +5,9 @@ import { movieActions } from '../../redux/slices/movieSlice';
 import {useSearchParams } from 'react-router-dom';
 import PaginationComponent from '../../components/paginationComponent/PaginationComponent';
 
+
 const MoviesPage = () => {
+
     const [query, setQuery] = useSearchParams({page: '1'})
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -17,7 +19,7 @@ const MoviesPage = () => {
     return (
         <div>
             <MoviesListComponent/>
-            <PaginationComponent setQuery={setQuery} />
+            <PaginationComponent setQuery={setQuery}/>
 
         </div>
     );

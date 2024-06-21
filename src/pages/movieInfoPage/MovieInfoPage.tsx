@@ -14,7 +14,7 @@ const MovieInfoPage = () => {
     }, [id])
     return (
         <div>
-            <MovieInfoComponent/>
+            <MovieInfoComponent key={id}/>
 
         </div>
     );

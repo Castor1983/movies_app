@@ -11,8 +11,8 @@ const HeaderComponent = () => {
         <div>
             <div className={css.Header}>
                 <h3>The MovieDB</h3>
-                <NavLink to={appRoutes.MOVIESLIST} style={{textDecoration: 'none', color: 'yellow'}}>Movies</NavLink>
-                <NavLink to={appRoutes.GENRELIST} style={{textDecoration: 'none', color: 'yellow'}}>Genres</NavLink>
+                <NavLink to={appRoutes.MOVIESLIST} style={{textDecoration: 'none', color: 'white'}}>Movies</NavLink>
+                <NavLink to={appRoutes.GENRELIST} style={{textDecoration: 'none', color: 'white'}}>Genres</NavLink>
                 <SearchByKeyWordsFormComponent/>
                 <ThemeComponent/>
                 <UserInfoComponent/>

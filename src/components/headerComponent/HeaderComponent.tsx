@@ -5,11 +5,13 @@ import UserInfoComponent from '../userInfoComponent/UserInfoComponent';
 import css from './Header.module.css'
 import ThemeComponent from '../themeComponent/ThemeComponent';
 import SearchByKeyWordsFormComponent from '../searchByKeyWordsFormComponent/SearchByKeyWordsFormComponent';
+import { useAppSelector } from '../../redux/store/store';
 
 const HeaderComponent = () => {
+    const {theme} = useAppSelector(state=> state.moviesListSlice)
     return (
         <div>
-            <div className={css.Header}>
+            <div className={theme? css.HeaderLight : css.HeaderDark}>
                 <h3>The MovieDB</h3>
                 <NavLink to={appRoutes.MOVIESLIST} style={{textDecoration: 'none', color: 'white'}}>Movies</NavLink>
                 <NavLink to={appRoutes.GENRELIST} style={{textDecoration: 'none', color: 'white'}}>Genres</NavLink>

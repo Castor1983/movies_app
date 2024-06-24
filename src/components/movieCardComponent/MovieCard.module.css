@@ -9,7 +9,12 @@
 
 }
 
-h3 {
+.titleLight {
+    text-align: center;
+    color: darkblue;
+}
+
+.titleDark {
     text-align: center;
     color: white;
 }

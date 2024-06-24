@@ -8,7 +8,7 @@ import { IGenreModel } from '../../models/IGenreModel';
 
 const MovieInfoComponent = () => {
     const navigate = useNavigate()
-    const{movie, movies} = useAppSelector(state => state.moviesListSlice)
+    const{movie, movies, theme} = useAppSelector(state => state.moviesListSlice)
     const {backdrop_path, title, overview, genres,  release_date, runtime, budget,} = movie;
     return (
         <div className={css.MovieDetails}>
@@ -16,7 +16,7 @@ const MovieInfoComponent = () => {
                 <img src={`${posterURL}${backdrop_path}`} alt={'poster'} className={css.img}/>
                 <h1>{title}</h1>
             </div>
-            <div className={css.textInfo}>
+            <div className={theme? css.textInfoLight : css.textInfoDark}>
                 <div>{overview}</div>
                 <div> Genres: {genres?.map((genre:IGenreModel) => <GenreBadgeComponent key={genre.id} genre={genre}/>)}</div>
                 <div>Relise date: {release_date}</div>
